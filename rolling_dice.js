@@ -62,16 +62,39 @@ function diceFor6() {
   return row1 + row2 + row3 + row4 + row5;
 }
 
+function delayOutput(num) {
+  for (let i = 0; i < 100000000 * num; i++) {
+  }
+}
+
+function rollingDice() {
+  for (let numberOfTimes = 0; numberOfTimes < 10; numberOfTimes++) {
+    delayOutput(2);
+    console.clear();
+    console.log(diceRolledOutput());
+  }
+}
+
 function diceRolledOutput() {
-  prompt('Press Return to roll the dice: ')
   switch (getDiceRoll()) {
     case 1: return diceFor1();
     case 2: return diceFor2();
     case 3: return diceFor3();
-    case 4: return diceFor4(); 
+    case 4: return diceFor4();
     case 5: return diceFor5();
     case 6: return diceFor6();
   }
 }
 
-console.log(diceRolledOutput());
+function rollDice() {
+  const choice = confirm('👉 Hit return to roll dice!!\n👉 Or want to exit!!');
+  console.log();
+  if (choice) {
+    return 0;
+  }
+
+  rollingDice();
+  rollDice();
+}
+
+rollDice();
