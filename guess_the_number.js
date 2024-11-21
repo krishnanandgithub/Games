@@ -15,7 +15,7 @@ function underlineB(text) {
 }
 
 function greet() {
-  const greetMsg1 = '\n' + '🤔 WELCOME IN GUESSING';;
+  const greetMsg1 = '🤔 WELCOME IN GUESSING';
   const greetMsg2 = '🤔🔮?🧑🏼‍🎓🧠';
   const greetMsg3 = 'THE NUMBER GAME 🤔';
 
@@ -28,7 +28,7 @@ function showRules() {
   const rule2 = '🔶 From the given range, your job is to guess one number\n';
   const rule3 = '🔷 For that you can select your number of attempt\n';
   const rule4 = '🔶 If you will guess the number before your attempts end\n';
-  const rule5 = '🔷 Then you will win otherwise try next time\n\n';
+  const rule5 = '🔷 Then you will win otherwise try next time';
 
   console.log(heading + rule1 + rule2 + rule3 + rule4 + rule5);
 }
@@ -118,7 +118,7 @@ function takeInputsValidateAndComplete() {
 
     return resultOfGuessingOfLuckyNumber(start, end, attempts, luckyNumber);
   }
-  console.log('\n🙃 Invalid range! \n🙂 Please enter valid range. \n');
+  console.log('\n🙃 Invalid range! ❌ \n🙂 Please enter valid range. \n');
 
   return takeInputsValidateAndComplete();
 }
@@ -127,30 +127,26 @@ function wantToPlay() {
   const choice = confirm('\n😎 Want to play???');
   if (!choice) {
     console.clear();
-    console.log('\n👋GOOD BYE!👋\n');
+    console.log('👋GOOD BYE!👋\n');
 
     return choice;
   }
-
+  
   return choice;
 }
 
 function startGame() {
-  if (!wantToPlay()) {
-    return 0;
-  }
+  prompt('\n😎 Hit return to continue:');
   console.clear();
-  if (confirm("👉👀 Do you want to see the rules?")) {
-    console.clear();
-    showRules();
-  } else {
-    console.clear();
-  }
   console.log('🩷 NICE, HAVE A GOOD LUCK!' + '\n');
   console.log(takeInputsValidateAndComplete());
-
-  return startGame();
+  if (wantToPlay()) { 
+    startGame();
+  }
+  return 0;
 }
 
+console.clear();
 greet();
+showRules();
 startGame();
