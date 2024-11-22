@@ -13,7 +13,7 @@ function getPosition(name, person, diceNumber, winningPosition) {
 
   if (person + diceNumber > winningPosition) {
     console.log(name + ' needs: ', winningPosition - person , ' to win 🏆');
-    return 0;
+    return person;
   }
   if (person + diceNumber <= winningPosition) {
     person = person + diceNumber;
@@ -58,9 +58,9 @@ function diceFor1() {
 
 function diceFor2() {
   const row1 = '┏━━━━━━━━┓\n';
-  const row2 = '┃ 🔵     ┃\n';
+  const row2 = '┃ ⚪     ┃\n';
   const row3 = '┃        ┃\n';
-  const row4 = '┃     🔵 ┃\n';
+  const row4 = '┃     ⚪ ┃\n';
   const row5 = '┗━━━━━━━━┛\n';
 
   console.log(row1 + row2 + row3 + row4 + row5)
@@ -69,9 +69,9 @@ function diceFor2() {
 
 function diceFor3() {
   const row1 = '┏━━━━━━━━┓\n';
-  const row2 = '┃ 🟢     ┃\n';
-  const row3 = '┃   🟢   ┃\n';
-  const row4 = '┃     🟢 ┃\n';
+  const row2 = '┃ ⚪     ┃\n';
+  const row3 = '┃   ⚪   ┃\n';
+  const row4 = '┃     ⚪ ┃\n';
   const row5 = '┗━━━━━━━━┛\n';
 
   console.log(row1 + row2 + row3 + row4 + row5)
@@ -91,9 +91,9 @@ function diceFor4() {
 
 function diceFor5() {
   const row1 = '┏━━━━━━━━┓\n';
-  const row2 = '┃ 🟠  🟠 ┃\n';
-  const row3 = '┃   🟠   ┃\n';
-  const row4 = '┃ 🟠  🟠 ┃\n';
+  const row2 = '┃ ⚪  ⚪ ┃\n';
+  const row3 = '┃   ⚪   ┃\n';
+  const row4 = '┃ ⚪  ⚪ ┃\n';
   const row5 = '┗━━━━━━━━┛\n';
 
   console.log(row1 + row2 + row3 + row4 + row5)
@@ -102,9 +102,9 @@ function diceFor5() {
 
 function diceFor6() {
   const row1 = '┏━━━━━━━━┓\n';
-  const row2 = '┃ 🟡  🟡 ┃\n';
-  const row3 = '┃ 🟡  🟡 ┃\n';
-  const row4 = '┃ 🟡  🟡 ┃\n';
+  const row2 = '┃ ⚪  ⚪ ┃\n';
+  const row3 = '┃ ⚪  ⚪ ┃\n';
+  const row4 = '┃ ⚪  ⚪ ┃\n';
   const row5 = '┗━━━━━━━━┛\n';
 
   console.log(row1 + row2 + row3 + row4 + row5)
@@ -127,7 +127,7 @@ function diceRolledOutput() {
   }
 }
 
-function rollingDice() {
+function rollDice() {
   for (let numberOfTimes = 0; numberOfTimes < 10; numberOfTimes++) {
     delayOutput(2);
     console.clear();
@@ -150,10 +150,10 @@ const p2Name = prompt('Enter player_2 name:');
 
 
 while (person1Score !== winningPosition || person2Score !== winningPosition) {
-  prompt(p1Name + "'s tern 🧑‍🦱🧑 🎲");
+  prompt(p1Name + "'s turn 🧑‍🦱🧑 🎲");
   console.log();
   console.clear();
-  diceNumber = rollingDice();
+  diceNumber = rollDice();
 
   console.log(p1Name + ' got 🎲:' + diceNumber);
   person1Score = getPosition(p1Name, person1Score, diceNumber, winningPosition);
@@ -166,8 +166,8 @@ while (person1Score !== winningPosition || person2Score !== winningPosition) {
     break;
   }
 
-  prompt(p2Name + "'s tern 🧑‍🦱🧑 🎲");
-  diceNumber = rollingDice();
+  prompt(p2Name + "'s turn 🧑‍🦱🧑 🎲");
+  diceNumber = rollDice();
 
   console.log();
   console.log(p2Name + ' got 🎲:' + diceNumber);
