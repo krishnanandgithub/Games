@@ -1,7 +1,7 @@
 function getCharToAdd(y, z, index) {
   let char = ' ';
   if (index > Math.min(y, z)) {
-    char = '=';
+    char = '━';
   }
   if (index === y) {
     char = '🟡';
@@ -23,7 +23,7 @@ function createLine(y, z) {
 }
 
 function delay(time) {
-  for (let i = 0; i < 100000000 * time; i++) {
+  for (let i = 0; i < 10000000 * time; i++) {
   }
 }
 
@@ -31,15 +31,15 @@ function createDNA() {
   for (let a = 0; a < 30; a++) {
     console.clear();
     dnaWave1(a);
-    delay(9);
+    delay(1);
     console.clear();
     dnaWave2(a);
-    delay(9);
+    delay(50);
   }
 }
 
 function dnaWave1(n) {
-  for (let i = -17 + 16 * n; i < 51 + 16 * n; i++) {
+  for (let i = -17 + 4 * n; i < 17 + 4 * n; i++) {
     const x1 = i / 5;
     const x2 = (i + 2) / 5;
     const y = Math.round(17 * Math.sin(x1) + 20);
@@ -50,8 +50,8 @@ function dnaWave1(n) {
 }
 
 function dnaWave2(n) {
-  const b = 8 * (2 * n + 1);
-  for (let i = -17 + b; i < 51 + b; i++) {
+  const b = 2 * (2 * n + 1);
+  for (let i = -17 + b; i < 17 + b; i++) {
     const x1 = i / 5;
     const x2 = (i + 2) / 5;
     const y = Math.round(17 * Math.sin(-x1) + 20);
