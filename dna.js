@@ -1,25 +1,21 @@
-function getCharToAdd(y, z, index) {
-  let char = ' ';
-  if (index > Math.min(y, z)) {
-    char = '━';
-  }
-  if (index === y) {
-    char = '🟡';
-  }
-  if (index === z) {
-    char = '🔴';
+function repeat(string, times) {
+  let repeatedString = '';
+  for (let i = 1; i < times; i++) {
+    repeatedString += string;
   }
 
-  return char;
+  return repeatedString;
 }
 
 function createLine(y, z) {
-  let string = '';
-  for (let index = 0; index <= Math.max(y, z); index++) {
-    string += getCharToAdd(y, z, index);
+  let clr1 = '🔴';
+  let clr2 = '🟡';
+  if (Math.min(y, z) === z) {
+    clr1 = '🟡';
+    clr2 = '🔴';
   }
 
-  return string;
+  return repeat(' ', Math.min(y, z)) + clr1 + repeat('━', Math.abs(y - z)) + clr2;
 }
 
 function delay(time) {
@@ -28,36 +24,23 @@ function delay(time) {
 }
 
 function createDNA() {
-  for (let a = 0; a < 30; a++) {
+  for (let n = 0; n < 100; n++) {
     console.clear();
-    dnaWave1(a);
-    delay(1);
-    console.clear();
-    dnaWave2(a);
-    delay(50);
+    dnaWave1(n);
+    delay(20);
   }
+}
+
+function sin(x, amplitude, wavelength, phase) {
+  return Math.round(amplitude * Math.sin(x * wavelength) + phase);
 }
 
 function dnaWave1(n) {
-  for (let i = -17 + 4 * n; i < 17 + 4 * n; i++) {
-    const x1 = i / 5;
-    const x2 = (i + 2) / 5;
-    const y = Math.round(17 * Math.sin(x1) + 20);
-    const z = Math.round(17 * Math.sin(-x2) + 20);
+  for (let i = -10 + n; i < 10 + n; i++) {
+    const y = sin(i, 17, 0.2, 20);
+    const z = sin(-(i + 2), 17, 0.2, 20);
 
     console.log(createLine(y, z));
-  }
-}
-
-function dnaWave2(n) {
-  const b = 2 * (2 * n + 1);
-  for (let i = -17 + b; i < 17 + b; i++) {
-    const x1 = i / 5;
-    const x2 = (i + 2) / 5;
-    const y = Math.round(17 * Math.sin(-x1) + 20);
-    const z = Math.round(17 * Math.sin(x2) + 20);
-
-    console.log(createLine(z, y));
   }
 }
 
